@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsx62olbmpdge"]
+
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_vu5en"]
+[ext_resource type="Script" uid="uid://dtuu2sjmyewwm" path="res://scripts/player_input.gd" id="2_vu5en"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vu5en"]
+distance = -494.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xhekj"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8oql1"]
+normal = Vector2(-0.9999999, -0.0003951007)
+distance = -2557.9937
+
+[node name="Room1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_vu5en")]
+position = Vector2(384, 204)
+script = ExtResource("2_vu5en")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1279, 7)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_vu5en")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_xhekj")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_8oql1")
