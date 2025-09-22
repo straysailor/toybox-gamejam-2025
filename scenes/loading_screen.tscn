@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b3bc8i72fglwh"]
+[gd_scene load_steps=2 format=3 uid="uid://b3bc8i72fglwh"]
+
+[ext_resource type="Script" uid="uid://kx6r1rx0ifr3" path="res://scripts/loading_screen.gd" id="1_ep5rh"]
 
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
@@ -7,13 +9,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ep5rh")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 411.0
+offset_top = 200.0
+offset_right = 888.0
+offset_bottom = 337.0
+theme_override_font_sizes/font_size = 38
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 320.0
+offset_right = 1009.0
+offset_bottom = 347.0
