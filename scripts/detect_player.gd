@@ -19,4 +19,3 @@ func _input(event: InputEvent) -> void:
 		indicator.stop(false)
 		text.label_settings.font_color = Color(255.0, 255.0, 255.0, 1.0)
 		text.text = "Hello\nv"
-	
