@@ -3,35 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://hsuoqaru7h6q" path="res://assets/TestDummy1.png" id="1_abqhh"]
 [ext_resource type="Script" uid="uid://dnigwnhv7w4i0" path="res://scripts/detect_player.gd" id="2_rv78h"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7n8xq"]
-atlas = ExtResource("1_abqhh")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4wlns"]
-atlas = ExtResource("1_abqhh")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tl2vt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7n8xq")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4wlns")
-}],
-"loop": true,
-"name": &"hop",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwkja"]
-size = Vector2(851, 479)
+size = Vector2(620, 479)
 
 [sub_resource type="SystemFont" id="SystemFont_abqhh"]
 
@@ -77,19 +50,40 @@ _data = {
 &"fade_text": SubResource("Animation_7n8xq")
 }
 
-[node name="NPC" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n8xq"]
+atlas = ExtResource("1_abqhh")
+region = Rect2(0, 0, 512, 512)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
-sprite_frames = SubResource("SpriteFrames_tl2vt")
-animation = &"hop"
-frame_progress = 0.12804501
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wlns"]
+atlas = ExtResource("1_abqhh")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tl2vt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n8xq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wlns")
+}],
+"loop": true,
+"name": &"hop",
+"speed": 5.0
+}]
+
+[node name="NPC" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("2_rv78h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(13.5, -9.5)
+position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_hwkja")
 
 [node name="InteractIndicator" type="Label" parent="."]
@@ -107,6 +101,12 @@ vertical_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_tl2vt")
 }
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_tl2vt")
+animation = &"hop"
+frame_progress = 0.12804501
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
