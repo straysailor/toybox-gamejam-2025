@@ -1,0 +1,168 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwy7f7ij1ye76"]
+
+[ext_resource type="Script" uid="uid://f60dica7o8mv" path="res://scripts/door.gd" id="1_hpvv5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvdjg"]
+size = Vector2(67, 1110)
+
+[sub_resource type="LabelSettings" id="LabelSettings_83dcw"]
+font_size = 60
+font_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_la1wf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(73, 313)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:label_settings:font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_18pbm"]
+resource_name = "bounce"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.24999996, 0.37892887),
+"update": 0,
+"values": [Vector2(73, 50), Vector2(98, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_q5w8r"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t58dd"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.98),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ju5n0"]
+_data = {
+&"RESET": SubResource("Animation_la1wf"),
+&"bounce": SubResource("Animation_18pbm"),
+&"fade_in": SubResource("Animation_q5w8r"),
+&"fade_out": SubResource("Animation_t58dd")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hpvv5"]
+animation = &"bounce"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvdjg"]
+animation = &"fade_in"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_83dcw"]
+resource_name = "fade_blend"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_la1wf"]
+graph_offset = Vector2(-220.63414, -12.967834)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_uvdjg")
+nodes/Animation/position = Vector2(-280, 20)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_hpvv5")
+"nodes/Animation 2/position" = Vector2(-280, 200)
+nodes/fade_blend/node = SubResource("AnimationNodeBlend2_83dcw")
+nodes/fade_blend/position = Vector2(-20, 0)
+node_connections = [&"output", 0, &"fade_blend", &"fade_blend", 0, &"Animation", &"fade_blend", 1, &"Animation 2"]
+
+[node name="Door" type="Area2D"]
+script = ExtResource("1_hpvv5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35.5, 169)
+shape = SubResource("RectangleShape2D_uvdjg")
+
+[node name="InteractIndicator" type="Label" parent="."]
+offset_left = 73.0
+offset_top = 313.0
+offset_right = 255.00328
+offset_bottom = 414.0
+text = "< Exit"
+label_settings = SubResource("LabelSettings_83dcw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IndicatorAnimation" type="AnimationPlayer" parent="InteractIndicator"]
+libraries = {
+&"": SubResource("AnimationLibrary_ju5n0")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="InteractIndicator"]
+tree_root = SubResource("AnimationNodeBlendTree_la1wf")
+anim_player = NodePath("../IndicatorAnimation")
+parameters/fade_blend/blend_amount = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_exited" from="." to="." method="_on_area_exited"]
+[connection signal="ready" from="." to="." method="_on_ready"]
