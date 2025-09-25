@@ -41,7 +41,18 @@ shape = SubResource("WorldBoundaryShape2D_xhekj")
 shape = SubResource("WorldBoundaryShape2D_8oql1")
 
 [node name="NPC" parent="." instance=ExtResource("4_irjyx")]
-position = Vector2(2063, 273)
+position = Vector2(1815, 273)
+
+[node name="DoorLeft" parent="." instance=ExtResource("4_xhekj")]
+position = Vector2(6, -210)
+text = "< Enter"
+side = "left"
+color = Color(1, 1, 1, 0)
+next_scene = "res://scenes/main_menu.tscn"
 
 [node name="Door" parent="." instance=ExtResource("4_xhekj")]
-position = Vector2(6, -210)
+position = Vector2(1214, -226)
+text = "Enter >"
+side = "right"
+color = Color(1, 1, 1, 0)
+next_scene = "res://scenes/npc.tscn"

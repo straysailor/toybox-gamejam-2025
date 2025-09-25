@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwy7f7ij1ye76"]
+[gd_scene load_steps=19 format=3 uid="uid://dwy7f7ij1ye76"]
 
 [ext_resource type="Script" uid="uid://f60dica7o8mv" path="res://scripts/door.gd" id="1_hpvv5"]
 
@@ -6,6 +6,7 @@
 size = Vector2(67, 1110)
 
 [sub_resource type="LabelSettings" id="LabelSettings_83dcw"]
+resource_local_to_scene = true
 font_size = 60
 font_color = Color(1, 1, 1, 0)
 
@@ -21,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(73, 313)]
+"values": [Vector2(73, 50)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -48,8 +49,23 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_t58dd"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.98),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_18pbm"]
-resource_name = "bounce"
+resource_name = "bounce_left"
 length = 0.5
 loop_mode = 2
 tracks/0/type = "value"
@@ -92,8 +108,24 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_t58dd"]
-resource_name = "fade_out"
+[sub_resource type="Animation" id="Animation_hpvv5"]
+resource_name = "bounce_right"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.21022417, 0.40612686),
+"update": 0,
+"values": [Vector2(-186, 50), Vector2(-201, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_uvdjg"]
+resource_name = "fade_in_right"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,22 +133,36 @@ tracks/0/path = NodePath(".:label_settings:font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.98),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-180, 50)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ju5n0"]
 _data = {
 &"RESET": SubResource("Animation_la1wf"),
-&"bounce": SubResource("Animation_18pbm"),
+&"bounce_left": SubResource("Animation_18pbm"),
+&"bounce_right": SubResource("Animation_hpvv5"),
 &"fade_in": SubResource("Animation_q5w8r"),
+&"fade_in_right": SubResource("Animation_uvdjg"),
 &"fade_out": SubResource("Animation_t58dd")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hpvv5"]
-animation = &"bounce"
+animation = &"bounce_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvdjg"]
 animation = &"fade_in"
@@ -125,7 +171,8 @@ animation = &"fade_in"
 resource_name = "fade_blend"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_la1wf"]
-graph_offset = Vector2(-220.63414, -12.967834)
+resource_local_to_scene = true
+graph_offset = Vector2(-748.8211, 77.78812)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_uvdjg")
 nodes/Animation/position = Vector2(-280, 20)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_hpvv5")
@@ -133,6 +180,25 @@ nodes/Animation/position = Vector2(-280, 20)
 nodes/fade_blend/node = SubResource("AnimationNodeBlend2_83dcw")
 nodes/fade_blend/position = Vector2(-20, 0)
 node_connections = [&"output", 0, &"fade_blend", &"fade_blend", 0, &"Animation", &"fade_blend", 1, &"Animation 2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83dcw"]
+animation = &"bounce_right"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_la1wf"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_18pbm"]
+animation = &"fade_in_right"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_q5w8r"]
+graph_offset = Vector2(-102.6118, -57.266613)
+nodes/output/position = Vector2(600, 120)
+nodes/fade_in/node = SubResource("AnimationNodeAnimation_18pbm")
+nodes/fade_in/position = Vector2(-20, -40)
+nodes/bounce_right/node = SubResource("AnimationNodeAnimation_83dcw")
+nodes/bounce_right/position = Vector2(-40, 160)
+nodes/fade_bounce_right/node = SubResource("AnimationNodeBlend2_la1wf")
+nodes/fade_bounce_right/position = Vector2(260, 40)
+node_connections = [&"output", 0, &"fade_bounce_right", &"fade_bounce_right", 0, &"fade_in", &"fade_bounce_right", 1, &"bounce_right"]
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_hpvv5")
@@ -145,9 +211,9 @@ shape = SubResource("RectangleShape2D_uvdjg")
 
 [node name="InteractIndicator" type="Label" parent="."]
 offset_left = 73.0
-offset_top = 313.0
-offset_right = 255.00328
-offset_bottom = 414.0
+offset_top = 50.0
+offset_right = 254.99625
+offset_bottom = 151.0
 text = "< Exit"
 label_settings = SubResource("LabelSettings_83dcw")
 horizontal_alignment = 1
@@ -158,10 +224,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_ju5n0")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="InteractIndicator"]
+[node name="AnimTree_Left" type="AnimationTree" parent="InteractIndicator"]
+active = false
 tree_root = SubResource("AnimationNodeBlendTree_la1wf")
 anim_player = NodePath("../IndicatorAnimation")
-parameters/fade_blend/blend_amount = 1.0
+parameters/fade_blend/blend_amount = 0.0
+
+[node name="AnimTree_Right" type="AnimationTree" parent="InteractIndicator"]
+active = false
+root_motion_local = true
+tree_root = SubResource("AnimationNodeBlendTree_q5w8r")
+anim_player = NodePath("../IndicatorAnimation")
+parameters/fade_bounce_right/blend_amount = 0.0
 
 [connection signal="body_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_exited" from="." to="." method="_on_area_exited"]
