@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsx62olbmpdge"]
+[gd_scene load_steps=8 format=3 uid="uid://bsx62olbmpdge"]
 
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="1_vu5en"]
 [ext_resource type="Script" uid="uid://dtuu2sjmyewwm" path="res://scripts/player_input.gd" id="2_vu5en"]
 [ext_resource type="PackedScene" uid="uid://bxv3ppyoe5ikc" path="res://scenes/npc.tscn" id="4_irjyx"]
+[ext_resource type="PackedScene" uid="uid://dwy7f7ij1ye76" path="res://scenes/door.tscn" id="4_xhekj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vu5en"]
 distance = -494.0
@@ -40,4 +41,18 @@ shape = SubResource("WorldBoundaryShape2D_xhekj")
 shape = SubResource("WorldBoundaryShape2D_8oql1")
 
 [node name="NPC" parent="." instance=ExtResource("4_irjyx")]
-position = Vector2(2063, 273)
+position = Vector2(1815, 273)
+
+[node name="DoorLeft" parent="." instance=ExtResource("4_xhekj")]
+position = Vector2(6, -210)
+text = "< Enter"
+side = "left"
+color = Color(1, 1, 1, 0)
+next_scene = "res://scenes/main_menu.tscn"
+
+[node name="Door" parent="." instance=ExtResource("4_xhekj")]
+position = Vector2(1214, -226)
+text = "Enter >"
+side = "right"
+color = Color(1, 1, 1, 0)
+next_scene = "res://scenes/npc.tscn"

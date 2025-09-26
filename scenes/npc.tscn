@@ -99,6 +99,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="InteractIndicator"]
+root_motion_local = true
 libraries = {
 &"": SubResource("AnimationLibrary_tl2vt")
 }
