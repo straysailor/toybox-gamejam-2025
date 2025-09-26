@@ -33,4 +33,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Start"
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_pressed"]
