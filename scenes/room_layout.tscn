@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqxg0i0inl20q"]
+
+[ext_resource type="Script" uid="uid://cq2rvr0ablwtk" path="res://scripts/room_layout.gd" id="1_qx8us"]
+[ext_resource type="PackedScene" uid="uid://by0wo6v05hlwh" path="res://scenes/door.tscn" id="2_7j40l"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8oql1"]
+normal = Vector2(-0.9999999, -0.0003951007)
+distance = -2557.9937
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xhekj"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vu5en"]
+distance = -494.0
+
+[node name="RoomLayout" type="Node2D"]
+script = ExtResource("1_qx8us")
+
+[node name="DoorRight" parent="." instance=ExtResource("2_7j40l")]
+position = Vector2(2487, -223)
+text = "Enter >"
+side = "right"
+color = Color(1, 1, 1, 0)
+next_scene = "res://scenes/npc.tscn"
+
+[node name="DoorLeft" parent="." instance=ExtResource("2_7j40l")]
+position = Vector2(-5, -210)
+text = "< Enter"
+side = "left"
+color = Color(1, 1, 1, 0)
+next_scene = "res://scenes/main_menu.tscn"
+
+[node name="Right Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall"]
+shape = SubResource("WorldBoundaryShape2D_8oql1")
+
+[node name="Left Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall"]
+shape = SubResource("WorldBoundaryShape2D_xhekj")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_vu5en")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1279, 7)
+zoom = Vector2(0.5, 0.5)

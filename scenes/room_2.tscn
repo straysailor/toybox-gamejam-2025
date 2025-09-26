@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ly1si26xanw"]
+
+[ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_586c8"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="2_w0ydv"]
+
+[node name="Room2" type="Node2D"]
+
+[node name="RoomLayout" parent="." instance=ExtResource("1_586c8")]
+position = Vector2(7, -1)
+room_name = "Living Room"
+left_exit = "res://scenes/room_1.tscn"
+right_exit = "res://scenes/main_menu.tscn"
+
+[node name="Player" parent="." instance=ExtResource("2_w0ydv")]
+position = Vector2(273, 230)
