@@ -1,11 +1,14 @@
-extends Node
+class_name Inventory
 
+@export var id: String
+@export var inventory : Dictionary
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func add_item(name, number):
+	var count = inventory.get(name)
+	if count:
+		inventory.set(name, number + count)
+	else:
+		inventory.set(name, number)
+	
+func check_for_item(name):
+	print(inventory.get(name))
