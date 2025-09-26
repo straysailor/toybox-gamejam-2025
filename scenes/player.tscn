@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=6 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Texture2D" uid="uid://hsuoqaru7h6q" path="res://assets/TestDummy1.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dtuu2sjmyewwm" path="res://scripts/player_input.gd" id="1_g2els"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -23,6 +24,7 @@ height = 460.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
+script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i3pqv")
