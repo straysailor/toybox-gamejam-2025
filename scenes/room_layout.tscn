@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqxg0i0inl20q"]
+[gd_scene load_steps=7 format=3 uid="uid://dqxg0i0inl20q"]
 
 [ext_resource type="Script" uid="uid://cq2rvr0ablwtk" path="res://scripts/room_layout.gd" id="1_qx8us"]
 [ext_resource type="PackedScene" uid="uid://by0wo6v05hlwh" path="res://scenes/door.tscn" id="2_7j40l"]
+[ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://scenes/player.tscn" id="3_7j40l"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8oql1"]
 normal = Vector2(-0.9999999, -0.0003951007)
@@ -48,3 +49,9 @@ shape = SubResource("WorldBoundaryShape2D_vu5en")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1279, 7)
 zoom = Vector2(0.5, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("3_7j40l")]
+position = Vector2(223, 258)
+
+[connection signal="body_entered" from="DoorRight" to="." method="_on_door_right_body_entered"]
+[connection signal="body_entered" from="DoorLeft" to="." method="_on_door_left_body_entered"]

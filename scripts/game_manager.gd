@@ -2,6 +2,7 @@ extends Node
 
 var inventory: Inventory = Inventory.new()
 var player: PlayerVars = PlayerVars.new()
+var player_spawn_side: String = "left"
 
 func check_if_complete(quest)->bool:
 	var quest_objective = quest.objective

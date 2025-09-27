@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf2e7k1554bnp"]
+
+[ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_1nud3"]
+
+[node name="Room3" type="Node2D"]
+
+[node name="RoomLayout" parent="." instance=ExtResource("1_1nud3")]
+position = Vector2(4, -9)
+room_name = "Room 3"
+left_exit = "Null"
+right_exit = "res://scenes/room_1.tscn"

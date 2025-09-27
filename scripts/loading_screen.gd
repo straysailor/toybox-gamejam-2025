@@ -3,7 +3,14 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ResourceLoader.load_threaded_request(Global.next_scene)
+	if Global.next_scene != "Null":
+		print(Global.next_scene)
+		ResourceLoader.load_threaded_request(Global.next_scene)
+	else:
+		print("Scene does not exist")
+		Global.next_scene = "res://scenes/main_menu.tscn"
+		ResourceLoader.load_threaded_request(Global.next_scene)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
