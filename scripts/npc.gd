@@ -35,5 +35,6 @@ func _input(event: InputEvent) -> void:
 
 func handle_dialogue() -> void:
 	next_text = dialogue.next_dialogue()
-	
+	if dialogue.check_fulfilled():
+		dialogue = DialogueManager.get_dialogue(char_name)
 	

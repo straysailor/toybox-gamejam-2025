@@ -11,7 +11,7 @@ position = Vector2(384, 204)
 
 [node name="NPC" parent="." instance=ExtResource("4_irjyx")]
 position = Vector2(1815, 273)
-char_name = "evil"
+char_name = "good"
 
 [node name="RoomLayout" parent="." instance=ExtResource("4_xhekj")]
 room_name = "Kids Room"

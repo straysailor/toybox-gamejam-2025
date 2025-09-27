@@ -29,4 +29,4 @@ item_name = "Magic Orb"
 
 [node name="Collectible3" parent="." instance=ExtResource("3_4et86")]
 position = Vector2(1688, 314)
-item_name = "Maguc Orb"
+item_name = "Magic Orb"

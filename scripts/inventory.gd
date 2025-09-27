@@ -11,4 +11,7 @@ func add_item(name, number):
 		inventory.set(name, number)
 	
 func check_for_item(name):
-	print(inventory.get(name))
+	var number = inventory.get(name)
+	if !number:
+		number = -1
+	return number
