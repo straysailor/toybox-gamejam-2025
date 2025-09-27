@@ -88,10 +88,17 @@ position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_hwkja")
 
 [node name="InteractIndicator" type="Label" parent="."]
-offset_left = -175.0
-offset_top = -397.0
-offset_right = 177.0
-offset_bottom = -277.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -422.0
+offset_right = 176.0
+offset_bottom = -281.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Speak
 v"
 label_settings = SubResource("LabelSettings_rv78h")
