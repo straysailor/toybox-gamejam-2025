@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf2e7k1554bnp"]
+[gd_scene load_steps=13 format=3 uid="uid://bf2e7k1554bnp"]
 
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_1nud3"]
 [ext_resource type="Texture2D" uid="uid://bqsa1tkl5mgvf" path="res://assets/kidsroom_toybox_bg.png" id="1_bg4i0"]
+[ext_resource type="Script" uid="uid://bjlo02u5crh6h" path="res://scripts/bedroom.gd" id="1_m0s70"]
 [ext_resource type="PackedScene" uid="uid://bxv3ppyoe5ikc" path="res://scenes/npc.tscn" id="2_pmnxm"]
 [ext_resource type="PackedScene" uid="uid://8jhkaw13cssx" path="res://scenes/toy_box.tscn" id="4_bg4i0"]
 [ext_resource type="Script" uid="uid://lpn5loiisf0t" path="res://scenes/bed.gd" id="5_ovtde"]
@@ -17,6 +18,7 @@ size = Vector2(251.6322, 86.753204)
 size = Vector2(552, 350)
 
 [node name="Room3" type="Node2D"]
+script = ExtResource("1_m0s70")
 
 [node name="KidsroomToyboxBg" type="Sprite2D" parent="."]
 position = Vector2(1271.0001, -80)
@@ -79,5 +81,5 @@ position = Vector2(814, 14.999998)
 scale = Vector2(1.75, 1.75)
 texture = ExtResource("8_ovtde")
 
-[connection signal="body_entered" from="Bed/Area2D" to="RoomLayout" method="_on_bed_touched"]
-[connection signal="body_exited" from="Bed/Area2D" to="RoomLayout" method="_on_bed_left"]
+[connection signal="body_entered" from="Bed/Area2D" to="." method="_on_bed_touched"]
+[connection signal="body_exited" from="Bed/Area2D" to="." method="_on_bed_left"]

@@ -34,12 +34,3 @@ func _on_door_right_body_entered(body: Node2D) -> void:
 func _on_door_left_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and !spawn_mid:
 		GameManager.player_spawn_side = "right"
-
-
-func _on_bed_touched(body: Node2D) -> void:
-	if body.name == "Player":
-		player.climb_speed = 500
-
-func _on_bed_left(body:Node2D) -> void:
-		if body.name == "Player":
-			player.climb_speed = 0
