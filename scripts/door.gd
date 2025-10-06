@@ -5,6 +5,7 @@ extends Area2D
 @export var side : String
 @export var color: Color
 @export var next_scene : String
+@export var enabled : bool = true
 
 @onready var label_text = $InteractIndicator
 @onready var indicator = $InteractIndicator/IndicatorAnimation
@@ -18,7 +19,7 @@ func _on_ready() -> void:
 	label_text.text = text
 
 func _on_area_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and enabled:
 		player_in_range = true
 		if side == "left":
 			left_anim_tree.active = true
@@ -28,7 +29,7 @@ func _on_area_entered(body: Node2D) -> void:
 			right_anim_tree.set("parameters/fade_bounce_right/blend_amount", 0.5)
 
 func _on_area_exited(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and enabled:
 		player_in_range = false
 		if side == "left":
 			left_anim_tree.set("parameters/fade_blend/blend_amount", 1.0) 
@@ -40,7 +41,7 @@ func _on_area_exited(body: Node2D) -> void:
 
 		
 func _input(event:InputEvent) -> void:
-	if player_in_range and event.is_action_pressed("interact"):
+	if player_in_range and event.is_action_pressed("interact") and enabled:
 		Global.next_scene = next_scene;
 		get_tree().change_scene_to_packed(Global.loading_screen)
 		

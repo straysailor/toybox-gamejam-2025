@@ -9,7 +9,7 @@
 position = Vector2(7, -1)
 room_name = "Living Room"
 left_exit = "res://scenes/room_1.tscn"
-right_exit = "res://scenes/main_menu.tscn"
+right_exit = "dead_end"
 
 [node name="Collectible1" parent="." instance=ExtResource("3_4et86")]
 position = Vector2(728, 405)

@@ -7,6 +7,11 @@ extends Node2D
 @onready var player = $Player
 
 func _ready() -> void:
+	if left_exit == "dead_end":
+		$DoorLeft.enabled = false
+	if right_exit == "dead_end":
+		$DoorRight.enabled = false
+		
 	$DoorLeft.next_scene = left_exit
 	$DoorRight.next_scene = right_exit
 	if GameManager.player_spawn_side == "left":

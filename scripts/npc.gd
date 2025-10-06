@@ -14,6 +14,10 @@ var dialogue = null
 func _ready() -> void:
 	dialogue = DialogueManager.get_dialogue(char_name)
 	next_text = dialogue.next_dialogue()
+	if char_name == "evil":
+		$AnimatedSprite2D.play("evil_cat")
+	else:
+		$AnimatedSprite2D.play("default")
 	
 func _on_interact_area_entered(body: Node2D) -> void:
 	if body.name == "Player":

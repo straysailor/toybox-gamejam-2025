@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxv3ppyoe5ikc"]
+[gd_scene load_steps=13 format=3 uid="uid://bxv3ppyoe5ikc"]
 
 [ext_resource type="Texture2D" uid="uid://hsuoqaru7h6q" path="res://assets/TestDummy1.png" id="1_abqhh"]
 [ext_resource type="Script" uid="uid://dnigwnhv7w4i0" path="res://scripts/npc.gd" id="2_rv78h"]
+[ext_resource type="Texture2D" uid="uid://b8faam0nkbly6" path="res://assets/cat_toy_sprite.png" id="3_rv78h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwkja"]
 size = Vector2(620, 479)
@@ -56,7 +57,7 @@ atlas = ExtResource("1_abqhh")
 region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wlns"]
-atlas = ExtResource("1_abqhh")
+atlas = ExtResource("3_rv78h")
 region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tl2vt"]
@@ -74,7 +75,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4wlns")
 }],
 "loop": true,
-"name": &"hop",
+"name": &"evil_cat",
 "speed": 5.0
 }]
 
@@ -114,8 +115,7 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_tl2vt")
-animation = &"hop"
-frame_progress = 0.12804501
+animation = &"evil_cat"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_interact_area_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_interact_area_exited"]
