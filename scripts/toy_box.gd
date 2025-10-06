@@ -29,4 +29,8 @@ func _input(event: InputEvent) -> void:
 			has_been_opened = true
 			toybox_open = true
 			sprite.play("open")
+		else:
+			GameManager.player_spawn_side = "middle"
+			Global.next_scene = "res://scenes/toybox_interior.tscn";
+			get_tree().change_scene_to_packed(Global.loading_screen)
 		

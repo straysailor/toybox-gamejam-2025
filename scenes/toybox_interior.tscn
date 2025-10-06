@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkmudxt3yhv55"]
+
+[ext_resource type="Script" uid="uid://ctr6ljhble7b8" path="res://scenes/toybox_interior.gd" id="1_akje6"]
+[ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_cwemg"]
+[ext_resource type="Texture2D" uid="uid://38ihl08u12mu" path="res://assets/toybox_interior_bg.png" id="1_wlawp"]
+[ext_resource type="Texture2D" uid="uid://d3sa1atk04ut" path="res://assets/marble1.png" id="3_akje6"]
+[ext_resource type="Texture2D" uid="uid://so5o1twgtnau" path="res://assets/playcube1.png" id="4_6msx2"]
+[ext_resource type="PackedScene" uid="uid://bxv3ppyoe5ikc" path="res://scenes/npc.tscn" id="5_3ljtm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptmbe"]
+size = Vector2(411, 396)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6msx2"]
+size = Vector2(138, 353)
+
+[node name="Toybox Interior" type="Node2D"]
+script = ExtResource("1_akje6")
+
+[node name="ToyboxInteriorBg" type="Sprite2D" parent="."]
+position = Vector2(1298, -95)
+scale = Vector2(1.7429998, 1.7429998)
+texture = ExtResource("1_wlawp")
+
+[node name="RoomLayout" parent="." instance=ExtResource("1_cwemg")]
+position = Vector2(5, 70)
+spawn_mid = true
+room_name = "Toybox"
+left_exit = "res://scenes/room_3.tscn"
+right_exit = "dead_end"
+
+[node name="marble" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="marble"]
+z_index = 10
+position = Vector2(734.00006, 665.00006)
+scale = Vector2(1.7461538, 1.7461538)
+texture = ExtResource("3_akje6")
+
+[node name="box" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="box"]
+position = Vector2(347.75, 503.25)
+scale = Vector2(1.7275391, 1.7275391)
+texture = ExtResource("4_6msx2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="box"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="box/StaticBody2D"]
+position = Vector2(348.5, 506)
+shape = SubResource("RectangleShape2D_ptmbe")
+
+[node name="Area2D" type="Area2D" parent="box"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="box/Area2D"]
+position = Vector2(562, 509)
+shape = SubResource("RectangleShape2D_6msx2")
+
+[node name="NPC" parent="." instance=ExtResource("5_3ljtm")]
+position = Vector2(1982, 267)
+scale = Vector2(1.5, 1.5)
+char_name = "good"
+
+[connection signal="body_entered" from="box/Area2D" to="." method="_on_box_touched"]
+[connection signal="body_exited" from="box/Area2D" to="." method="_on_box_left"]

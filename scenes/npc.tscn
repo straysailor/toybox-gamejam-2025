@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxv3ppyoe5ikc"]
+[gd_scene load_steps=15 format=3 uid="uid://bxv3ppyoe5ikc"]
 
 [ext_resource type="Texture2D" uid="uid://hsuoqaru7h6q" path="res://assets/TestDummy1.png" id="1_abqhh"]
 [ext_resource type="Script" uid="uid://dnigwnhv7w4i0" path="res://scripts/npc.gd" id="2_rv78h"]
 [ext_resource type="Texture2D" uid="uid://b8faam0nkbly6" path="res://assets/cat_toy_sprite.png" id="3_rv78h"]
+[ext_resource type="Texture2D" uid="uid://y3l8eqlxxk01" path="res://assets/godot_sprite.png" id="4_7n8xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwkja"]
 size = Vector2(620, 479)
@@ -60,6 +61,10 @@ region = Rect2(0, 0, 512, 512)
 atlas = ExtResource("3_rv78h")
 region = Rect2(0, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl2vt"]
+atlas = ExtResource("4_7n8xq")
+region = Rect2(0, 0, 512, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tl2vt"]
 animations = [{
 "frames": [{
@@ -76,6 +81,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"evil_cat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl2vt")
+}],
+"loop": true,
+"name": &"godot_bot",
 "speed": 5.0
 }]
 
@@ -115,7 +128,7 @@ libraries = {
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_tl2vt")
-animation = &"evil_cat"
+animation = &"godot_bot"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_interact_area_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_interact_area_exited"]

@@ -1,13 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsx62olbmpdge"]
+[gd_scene load_steps=2 format=3 uid="uid://bsx62olbmpdge"]
 
-[ext_resource type="PackedScene" uid="uid://bxv3ppyoe5ikc" path="res://scenes/npc.tscn" id="4_irjyx"]
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="4_xhekj"]
 
 [node name="Room1" type="Node2D"]
-
-[node name="NPC" parent="." instance=ExtResource("4_irjyx")]
-position = Vector2(1815, 273)
-char_name = "good"
 
 [node name="RoomLayout" parent="." instance=ExtResource("4_xhekj")]
 room_name = "Kids Room"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf2e7k1554bnp"]
+[gd_scene load_steps=12 format=3 uid="uid://bf2e7k1554bnp"]
 
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_1nud3"]
 [ext_resource type="Texture2D" uid="uid://bqsa1tkl5mgvf" path="res://assets/kidsroom_toybox_bg.png" id="1_bg4i0"]
 [ext_resource type="PackedScene" uid="uid://bxv3ppyoe5ikc" path="res://scenes/npc.tscn" id="2_pmnxm"]
 [ext_resource type="PackedScene" uid="uid://8jhkaw13cssx" path="res://scenes/toy_box.tscn" id="4_bg4i0"]
+[ext_resource type="Script" uid="uid://lpn5loiisf0t" path="res://scenes/bed.gd" id="5_ovtde"]
 [ext_resource type="Texture2D" uid="uid://d205t4iguufux" path="res://assets/kids_bed_back.png" id="5_yvqia"]
 [ext_resource type="Texture2D" uid="uid://vrpm05aygvnp" path="res://assets/kids_bed_front.png" id="6_1bltn"]
 [ext_resource type="Texture2D" uid="uid://celjaw4mium1b" path="res://assets/kids_table.png" id="7_y78up"]
@@ -11,6 +12,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y78up"]
 size = Vector2(251.6322, 86.753204)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0s70"]
+size = Vector2(552, 350)
 
 [node name="Room3" type="Node2D"]
 
@@ -35,6 +39,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Bed" type="Node2D" parent="."]
 position = Vector2(-30, 0)
+script = ExtResource("5_ovtde")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bed"]
 position = Vector2(360.28888, 378.00003)
@@ -54,6 +59,12 @@ position = Vector2(314.5, 475.5)
 scale = Vector2(2.0863786, 2.0863788)
 shape = SubResource("RectangleShape2D_y78up")
 
+[node name="Area2D" type="Area2D" parent="Bed"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/Area2D"]
+position = Vector2(335, 438)
+shape = SubResource("RectangleShape2D_m0s70")
+
 [node name="Bedside Table" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Bedside Table"]
@@ -67,3 +78,6 @@ texture = ExtResource("7_y78up")
 position = Vector2(814, 14.999998)
 scale = Vector2(1.75, 1.75)
 texture = ExtResource("8_ovtde")
+
+[connection signal="body_entered" from="Bed/Area2D" to="RoomLayout" method="_on_bed_touched"]
+[connection signal="body_exited" from="Bed/Area2D" to="RoomLayout" method="_on_bed_left"]

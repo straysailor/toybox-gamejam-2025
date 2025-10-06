@@ -16,6 +16,8 @@ func _ready() -> void:
 	next_text = dialogue.next_dialogue()
 	if char_name == "evil":
 		$AnimatedSprite2D.play("evil_cat")
+	elif char_name == "good":
+		$AnimatedSprite2D.play("godot_bot")
 	else:
 		$AnimatedSprite2D.play("default")
 	
