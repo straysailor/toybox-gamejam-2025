@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bjlo02u5crh6h" path="res://scripts/bedroom.gd" id="1_m0s70"]
 [ext_resource type="PackedScene" uid="uid://bxv3ppyoe5ikc" path="res://scenes/npc.tscn" id="2_pmnxm"]
 [ext_resource type="PackedScene" uid="uid://8jhkaw13cssx" path="res://scenes/toy_box.tscn" id="4_bg4i0"]
-[ext_resource type="Script" uid="uid://lpn5loiisf0t" path="res://scenes/bed.gd" id="5_ovtde"]
+[ext_resource type="Script" uid="uid://lpn5loiisf0t" path="res://scripts/bed.gd" id="5_ovtde"]
 [ext_resource type="Texture2D" uid="uid://d205t4iguufux" path="res://assets/kids_bed_back.png" id="5_yvqia"]
 [ext_resource type="Texture2D" uid="uid://vrpm05aygvnp" path="res://assets/kids_bed_front.png" id="6_1bltn"]
 [ext_resource type="Texture2D" uid="uid://celjaw4mium1b" path="res://assets/kids_table.png" id="7_y78up"]

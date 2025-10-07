@@ -8,4 +8,5 @@ func _on_start_pressed() -> void:
 
 
 func _on_ready() -> void:
+	GameManager.set_up_game()
 	DialogueManager.set_up_dialogue()

@@ -1,13 +1,67 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgpeednoqvlk3"]
+[gd_scene load_steps=24 format=3 uid="uid://bgpeednoqvlk3"]
 
 [ext_resource type="Script" uid="uid://jnex0ror2wpj" path="res://scripts/collectible.gd" id="1_1pg6c"]
 [ext_resource type="Texture2D" uid="uid://hsuoqaru7h6q" path="res://assets/TestDummy1.png" id="2_61c27"]
+[ext_resource type="Texture2D" uid="uid://cmdy5maxjasti" path="res://assets/magic_sprite_sheet.png" id="3_61c27"]
+[ext_resource type="Texture2D" uid="uid://b22ydrwe1ebvw" path="res://assets/wand_sprite.png" id="4_ga2k0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ga2k0"]
 radius = 66.007576
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gns2"]
 atlas = ExtResource("2_61c27")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61c27"]
+atlas = ExtResource("3_61c27")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udoxq"]
+atlas = ExtResource("3_61c27")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naap0"]
+atlas = ExtResource("3_61c27")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgba0"]
+atlas = ExtResource("3_61c27")
+region = Rect2(0, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0el1t"]
+atlas = ExtResource("3_61c27")
+region = Rect2(300, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwfng"]
+atlas = ExtResource("3_61c27")
+region = Rect2(600, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga2k0"]
+atlas = ExtResource("3_61c27")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rapul"]
+atlas = ExtResource("3_61c27")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh687"]
+atlas = ExtResource("3_61c27")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma10x"]
+atlas = ExtResource("3_61c27")
+region = Rect2(0, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuck5"]
+atlas = ExtResource("3_61c27")
+region = Rect2(300, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72l5o"]
+atlas = ExtResource("3_61c27")
+region = Rect2(600, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqyxe"]
+atlas = ExtResource("4_ga2k0")
 region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rapul"]
@@ -18,6 +72,60 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61c27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udoxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naap0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgba0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0el1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwfng")
+}],
+"loop": true,
+"name": &"heart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga2k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rapul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh687")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma10x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuck5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72l5o")
+}],
+"loop": true,
+"name": &"magic_orb",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqyxe")
+}],
+"loop": true,
+"name": &"magic_wand",
 "speed": 5.0
 }]
 
@@ -91,8 +199,9 @@ script = ExtResource("1_1pg6c")
 shape = SubResource("CircleShape2D_ga2k0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.30859375, 0.25195313)
+scale = Vector2(0.6088152, 0.4970706)
 sprite_frames = SubResource("SpriteFrames_rapul")
+animation = &"magic_wand"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")
@@ -101,4 +210,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_ga2k0")
 }
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="InteractArea" to="." method="_on_body_entered"]

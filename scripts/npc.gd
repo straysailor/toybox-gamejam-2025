@@ -22,12 +22,14 @@ func _ready() -> void:
 		$AnimatedSprite2D.play("default")
 	
 func _on_interact_area_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and DialogueManager.dialogue_enabled:
 		player_in_range = true
 		indicator.play("fade_text")
+	elif body.name == "Player":
+		GameManager.check_if_complete(GameManager.active_quests[0])
 
 func _on_interact_area_exited(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and DialogueManager.dialogue_enabled:
 		text.text = text_default
 		player_in_range = false
 		indicator.stop(false)
@@ -37,6 +39,7 @@ func _input(event: InputEvent) -> void:
 		indicator.stop(false)
 		text.label_settings.font_color = Color(255.0, 255.0, 255.0, 1.0)
 		text.text = next_text + "\nv"
+		GameManager.add_active_quest(dialogue.quest)
 		handle_dialogue()
 
 func handle_dialogue() -> void:

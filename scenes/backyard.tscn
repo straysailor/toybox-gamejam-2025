@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://djerv5skfctik"]
+
+[ext_resource type="Texture2D" uid="uid://dxgxgkk0ukfh6" path="res://assets/kids_backyard_bg.png" id="1_2n3w8"]
+[ext_resource type="Script" uid="uid://b8kaprs2nksue" path="res://scripts/backyard.gd" id="1_c76ol"]
+[ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_m25et"]
+
+[node name="Backyard" type="Node2D"]
+script = ExtResource("1_c76ol")
+
+[node name="KidsBackyardBg" type="Sprite2D" parent="."]
+position = Vector2(1282, -96.00007)
+scale = Vector2(1.7223331, 1.642)
+texture = ExtResource("1_2n3w8")
+
+[node name="RoomLayout" parent="." instance=ExtResource("1_m25et")]
+position = Vector2(0, -2)
+spawn_mid = true
+room_name = "Backyard"
+left_exit = "res://scenes/room_1.tscn"
+right_exit = "dead_end"

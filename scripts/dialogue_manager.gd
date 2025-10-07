@@ -73,6 +73,7 @@ var good_dialogue_data = [
 	}
 ]
 
+var dialogue_enabled : bool = false
 var current_evil_dialogue : DialogueData 
 var current_good_dialogue : DialogueData
 
@@ -124,10 +125,12 @@ func advance_quest_stage(completed_quest: QuestData)->void:
 		for d in current_good_dialogue.next_quest:
 			if d.tag == "failure":
 				current_good_dialogue = d
-	else:
+	elif completed_quest.quest_line == "good":
 		for d in current_evil_dialogue.next_quest:
 			if d.tag=="failure":
 				current_evil_dialogue = d
 		for d in current_good_dialogue.next_quest:
 			if d.tag == "success":
 				current_good_dialogue = d
+	else:
+		dialogue_enabled = true

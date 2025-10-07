@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dkmudxt3yhv55"]
 
-[ext_resource type="Script" uid="uid://ctr6ljhble7b8" path="res://scenes/toybox_interior.gd" id="1_akje6"]
+[ext_resource type="Script" uid="uid://ctr6ljhble7b8" path="res://scripts/toybox_interior.gd" id="1_akje6"]
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_cwemg"]
 [ext_resource type="Texture2D" uid="uid://38ihl08u12mu" path="res://assets/toybox_interior_bg.png" id="1_wlawp"]
 [ext_resource type="Texture2D" uid="uid://d3sa1atk04ut" path="res://assets/marble1.png" id="3_akje6"]
@@ -17,7 +17,7 @@ size = Vector2(138, 353)
 script = ExtResource("1_akje6")
 
 [node name="ToyboxInteriorBg" type="Sprite2D" parent="."]
-position = Vector2(1298, -95)
+position = Vector2(1295, -70)
 scale = Vector2(1.7429998, 1.7429998)
 texture = ExtResource("1_wlawp")
 
@@ -37,6 +37,7 @@ scale = Vector2(1.7461538, 1.7461538)
 texture = ExtResource("3_akje6")
 
 [node name="box" type="Node2D" parent="."]
+position = Vector2(0, -30)
 
 [node name="Sprite2D" type="Sprite2D" parent="box"]
 position = Vector2(347.75, 503.25)

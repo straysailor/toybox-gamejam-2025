@@ -1,28 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5ly1si26xanw"]
 
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_586c8"]
-[ext_resource type="PackedScene" uid="uid://bgpeednoqvlk3" path="res://scenes/collectible.tscn" id="3_4et86"]
+[ext_resource type="Script" uid="uid://bls7vsuokfnxs" path="res://scripts/room_2.gd" id="1_w0ydv"]
 
 [node name="Room2" type="Node2D"]
+script = ExtResource("1_w0ydv")
 
 [node name="RoomLayout" parent="." instance=ExtResource("1_586c8")]
 position = Vector2(7, -1)
 room_name = "Living Room"
 left_exit = "res://scenes/room_1.tscn"
 right_exit = "dead_end"
-
-[node name="Collectible1" parent="." instance=ExtResource("3_4et86")]
-position = Vector2(728, 405)
-item_name = "Magic Orb"
-
-[node name="Collectible" parent="." instance=ExtResource("3_4et86")]
-position = Vector2(1091, 433)
-item_name = "Magic Orb"
-
-[node name="Collectible2" parent="." instance=ExtResource("3_4et86")]
-position = Vector2(1402, 345)
-item_name = "Magic Orb"
-
-[node name="Collectible3" parent="." instance=ExtResource("3_4et86")]
-position = Vector2(1688, 314)
-item_name = "Magic Orb"
