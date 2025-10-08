@@ -30,14 +30,19 @@ func _physics_process(delta: float) -> void:
 			sprites.flip_h = true
 		else:
 			sprites.flip_h = false
-			
-		sprites.play("walk")
+		if is_on_floor():
+			sprites.play("walk")
+		else:
+			sprites.play("jump")
 			
 		velocity.x = direction * SPEED
 	else:
 		if facing == "right":
 			sprites.flip_h = true
-		sprites.play("idle")
+		if is_on_floor():
+			sprites.play("idle")
+		else:
+			sprites.play("jump")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
