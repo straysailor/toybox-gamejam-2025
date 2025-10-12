@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsx62olbmpdge"]
+[gd_scene load_steps=5 format=3 uid="uid://bsx62olbmpdge"]
 
 [ext_resource type="Texture2D" uid="uid://cl6ua0qn5snac" path="res://assets/kids_kitchen_bg.png" id="1_8oql1"]
 [ext_resource type="PackedScene" uid="uid://bhevyemulabwg" path="res://scenes/back_door.tscn" id="2_vu5en"]
+[ext_resource type="PackedScene" uid="uid://cistgruajftgj" path="res://scenes/toy.tscn" id="4_irjyx"]
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="4_xhekj"]
 
 [node name="Room1" type="Node2D"]
@@ -19,3 +20,14 @@ right_exit = "res://scenes/room_2.tscn"
 [node name="Back Door" parent="." instance=ExtResource("2_vu5en")]
 position = Vector2(1763, -218)
 next_scene = "res://scenes/backyard.tscn"
+
+[node name="Toy" parent="." instance=ExtResource("4_irjyx")]
+position = Vector2(1052, 262)
+
+[node name="Toy2" parent="." instance=ExtResource("4_irjyx")]
+position = Vector2(1383, 257)
+toy_type = "fox"
+
+[node name="Toy3" parent="." instance=ExtResource("4_irjyx")]
+position = Vector2(688, 261)
+toy_type = "doll"
