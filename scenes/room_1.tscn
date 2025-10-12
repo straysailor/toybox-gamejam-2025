@@ -14,8 +14,8 @@ texture = ExtResource("1_8oql1")
 
 [node name="RoomLayout" parent="." instance=ExtResource("4_xhekj")]
 room_name = "Kids Room"
-left_exit = "res://scenes/room_3.tscn"
-right_exit = "res://scenes/room_2.tscn"
+left_exit = "res://scenes/room_2.tscn"
+right_exit = "dead_end"
 
 [node name="Back Door" parent="." instance=ExtResource("2_vu5en")]
 position = Vector2(1763, -218)

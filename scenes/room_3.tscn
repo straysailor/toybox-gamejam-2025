@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bf2e7k1554bnp"]
+[gd_scene load_steps=12 format=3 uid="uid://bf2e7k1554bnp"]
 
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_1nud3"]
 [ext_resource type="Texture2D" uid="uid://bqsa1tkl5mgvf" path="res://assets/kidsroom_toybox_bg.png" id="1_bg4i0"]
 [ext_resource type="Script" uid="uid://bjlo02u5crh6h" path="res://scripts/bedroom.gd" id="1_m0s70"]
-[ext_resource type="PackedScene" uid="uid://bxv3ppyoe5ikc" path="res://scenes/npc.tscn" id="2_pmnxm"]
 [ext_resource type="PackedScene" uid="uid://8jhkaw13cssx" path="res://scenes/toy_box.tscn" id="4_bg4i0"]
 [ext_resource type="Script" uid="uid://lpn5loiisf0t" path="res://scripts/bed.gd" id="5_ovtde"]
 [ext_resource type="Texture2D" uid="uid://d205t4iguufux" path="res://assets/kids_bed_back.png" id="5_yvqia"]
@@ -29,11 +28,7 @@ texture = ExtResource("1_bg4i0")
 position = Vector2(4, -9)
 room_name = "Room 3"
 left_exit = "dead_end"
-right_exit = "res://scenes/room_1.tscn"
-
-[node name="NPC" parent="." instance=ExtResource("2_pmnxm")]
-position = Vector2(2023, 323)
-char_name = "evil"
+right_exit = "res://scenes/room_2.tscn"
 
 [node name="ToyBox" parent="." instance=ExtResource("4_bg4i0")]
 position = Vector2(1210, 389)

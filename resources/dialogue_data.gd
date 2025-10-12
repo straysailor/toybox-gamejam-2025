@@ -25,7 +25,11 @@ func next_dialogue()->String:
 		print("The quest is on!")
 		quest_active = true
 	return next
-
+	
+func check_updated()-> bool:
+	if quest.get_stage() != GameManager.stage:
+		return true
+	return false
 func check_fulfilled()->bool:
 	print("Checking if the quest has been fulfilled")
 	if quest_active:

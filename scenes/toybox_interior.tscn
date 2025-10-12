@@ -57,8 +57,11 @@ position = Vector2(562, 509)
 shape = SubResource("RectangleShape2D_6msx2")
 
 [node name="NPC" parent="." instance=ExtResource("5_3ljtm")]
-position = Vector2(1982, 267)
-scale = Vector2(1.5, 1.5)
+position = Vector2(2030, 391)
+char_name = "evil"
+
+[node name="NPC2" parent="." instance=ExtResource("5_3ljtm")]
+position = Vector2(1117, 386)
 char_name = "good"
 
 [connection signal="body_entered" from="box/Area2D" to="." method="_on_box_touched"]

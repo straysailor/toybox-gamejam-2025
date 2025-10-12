@@ -19,6 +19,6 @@ scale = Vector2(1.5, 1.5)
 
 [node name="RoomLayout" parent="." instance=ExtResource("1_586c8")]
 position = Vector2(7, -1)
-room_name = "Living Room"
-left_exit = "res://scenes/room_1.tscn"
-right_exit = "dead_end"
+room_name = "Hall"
+left_exit = "res://scenes/room_3.tscn"
+right_exit = "res://scenes/room_1.tscn"

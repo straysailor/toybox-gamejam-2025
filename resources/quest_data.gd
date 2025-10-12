@@ -23,3 +23,6 @@ func check_complete() -> bool:
 func accept_quest() -> void:
 	accepted = true
 	GameManager.add_active_quest(self)
+
+func get_stage() -> int:
+	return quest_stage

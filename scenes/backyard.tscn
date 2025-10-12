@@ -1,8 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://djerv5skfctik"]
+[gd_scene load_steps=14 format=3 uid="uid://djerv5skfctik"]
 
 [ext_resource type="Texture2D" uid="uid://dxgxgkk0ukfh6" path="res://assets/kids_backyard_bg.png" id="1_2n3w8"]
 [ext_resource type="Script" uid="uid://b8kaprs2nksue" path="res://scripts/backyard.gd" id="1_c76ol"]
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_m25et"]
+[ext_resource type="Texture2D" uid="uid://cmc6d37fb7t5t" path="res://assets/corrupt_grave_sprite_sheet.png" id="4_c76ol"]
+[ext_resource type="Texture2D" uid="uid://d0fgdedidby43" path="res://assets/gem_sprite.png" id="5_euoo7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euoo7"]
+atlas = ExtResource("4_c76ol")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha4da"]
+atlas = ExtResource("4_c76ol")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_215ad"]
+atlas = ExtResource("4_c76ol")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6ybe"]
+atlas = ExtResource("4_c76ol")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b2hr"]
+atlas = ExtResource("4_c76ol")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68s3t"]
+atlas = ExtResource("4_c76ol")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_howbs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euoo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ha4da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_215ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6ybe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b2hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68s3t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c76ol"]
+size = Vector2(314.75, 546)
 
 [node name="Backyard" type="Node2D"]
 script = ExtResource("1_c76ol")
@@ -18,3 +73,26 @@ spawn_mid = true
 room_name = "Backyard"
 left_exit = "res://scenes/room_1.tscn"
 right_exit = "dead_end"
+
+[node name="Corrupt Grave" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Corrupt Grave"]
+visible = false
+position = Vector2(1563.0001, 261)
+scale = Vector2(1.7978516, 1.6678183)
+sprite_frames = SubResource("SpriteFrames_howbs")
+frame_progress = 0.50274104
+
+[node name="Area2D" type="Area2D" parent="Corrupt Grave"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corrupt Grave/Area2D"]
+position = Vector2(1547, 281)
+shape = SubResource("RectangleShape2D_c76ol")
+
+[node name="GemSprite" type="Sprite2D" parent="."]
+modulate = Color(0.047705133, 0.17827347, 0.19231011, 1)
+position = Vector2(1543, 389)
+scale = Vector2(2.0333333, 2.0066667)
+texture = ExtResource("5_euoo7")
+
+[connection signal="input_event" from="Corrupt Grave/Area2D" to="." method="_on_grave_input_event"]

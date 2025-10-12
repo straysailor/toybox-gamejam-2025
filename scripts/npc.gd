@@ -44,7 +44,7 @@ func _input(event: InputEvent) -> void:
 
 func handle_dialogue() -> void:
 	next_text = dialogue.next_dialogue()
-	if dialogue.check_fulfilled():
+	if dialogue.check_fulfilled() or dialogue.check_updated():
 		dialogue = DialogueManager.get_dialogue(char_name)
 		next_text = dialogue.next_dialogue()
 	

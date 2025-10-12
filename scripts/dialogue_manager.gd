@@ -10,7 +10,7 @@ var quest_data = [
 	{"line":"evil",
 	"stage": 2,
 	"name":"Second Evil Quest",
-	"objective":"Puzzle",
+	"objective":"Gemstone",
 	"number": 1
 	},
 	{"line":"good",
@@ -22,7 +22,7 @@ var quest_data = [
 	{"line":"good",
 	"stage": 2,
 	"name":"Second Good Quest",
-	"objective":"Puzzle 2",
+	"objective":"Gemstone",
 	"number": 1
 	},
 ]
@@ -30,14 +30,16 @@ var evil_dialogue_data = [
 	{"id":"first_evil_quest",
 	"tag": "success",
 	"char":"evil", 
-	"lines":["Hello", "Welcome to the world", "Let's get started"],
+	"lines":["Good", "I’ll make sure you’re well compensated by the end of this farce", "Now I need you to go around the house\n and poke the other toys with your Magical Wand",
+	"Don’t worry about hurting them, they won’t feel a thing", "They've been hiding secrets from you", "Collect at least 3 of these secrets for me"],
 	"quest":"First Evil Quest",
 	"options": ["second_evil_quest","first_failed_evil_quest"]
 	},
 	{"id":"second_evil_quest",
 	"tag": "success",
 	"char":"evil", 
-	"lines":["Nice going", "Let's get to our second quest", "Here's the plan:"],
+	"lines":["Great job kid", "Let’s see if Godot will like this present for him", "But before that I need you to relinquish your heart by letting you out of your cage", 
+	"Go find your parents and give them a bonk with your Magical Wand", "I promise they won’t nag you about it and they’ll have fun like you do."],
 	"quest":"Second Evil Quest",
 	"options": []
 	},
@@ -53,14 +55,14 @@ var good_dialogue_data = [
 	{"id":"first_good_quest",
 	"tag": "success",
 	"char":"good", 
-	"lines":["Good day!", "Welcome to my game!", "Let's Play"],
+	"lines":["Ah thank goodness for choosing to help me", "First, we need to get rid of the evil before us", "To do that I need you to collect magic around the house", "I sense it's stirred around the house", "Go collect me at least 3 orbs!"],
 	"quest":"First Good Quest",
 	"options": ["second_good_quest","first_failed_good_quest"]
 	},
 	{"id":"second_good_quest",
 	"tag": "success",
 	"char":"good", 
-	"lines":["Wonderful!", "Let's get move on", "I believe you can do this:"],
+	"lines":["Great!", "Now that we have enough “Magic” charged into your Wand, I need one more thing", "I've never seen it before personally", "but the fox told me!", "He said it hangs under three and three quarters"],
 	"quest":"Second Good Quest",
 	"options": []
 	},

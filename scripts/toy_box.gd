@@ -9,7 +9,7 @@ var has_been_opened = false
 @onready var anim_player = $AnimationPlayer
 
 func _on_toybox_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and GameManager.inventory.check_for_item("Magic Wand") > 0:
 		player_in_range = true
 		if !has_been_opened:
 			anim_player.play("shake")
