@@ -30,7 +30,7 @@ var evil_dialogue_data = [
 	{"id":"first_evil_quest",
 	"tag": "success",
 	"char":"evil", 
-	"lines":["Good", "I’ll make sure you’re well compensated by the end of this farce", "Now I need you to go around the house\n and poke the other toys with your Magical Wand",
+	"lines":["Good", "I’ll make sure you’re well compensated\nby the end of this farce", "Now I need you to go around the house\nand poke the other toys with your\nMagical Wand",
 	"Don’t worry about hurting them, they won’t feel a thing", "They've been hiding secrets from you", "Collect at least 3 of these secrets for me"],
 	"quest":"First Evil Quest",
 	"options": ["second_evil_quest","first_failed_evil_quest"]
@@ -38,7 +38,7 @@ var evil_dialogue_data = [
 	{"id":"second_evil_quest",
 	"tag": "success",
 	"char":"evil", 
-	"lines":["Great job kid", "Let’s see if Godot will like this present for him", "But before that I need you to relinquish your heart by letting you out of your cage", 
+	"lines":["Great job kid", "Let’s see if Godot will like this present for him", "But before that I need you to relinquish your heart\nby letting you out of your cage", 
 	"Go find your parents and give them a bonk with your Magical Wand", "I promise they won’t nag you about it and they’ll have fun like you do."],
 	"quest":"Second Evil Quest",
 	"options": []

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://djerv5skfctik"]
+[gd_scene load_steps=15 format=3 uid="uid://djerv5skfctik"]
 
 [ext_resource type="Texture2D" uid="uid://dxgxgkk0ukfh6" path="res://assets/kids_backyard_bg.png" id="1_2n3w8"]
 [ext_resource type="Script" uid="uid://b8kaprs2nksue" path="res://scripts/backyard.gd" id="1_c76ol"]
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_m25et"]
 [ext_resource type="Texture2D" uid="uid://cmc6d37fb7t5t" path="res://assets/corrupt_grave_sprite_sheet.png" id="4_c76ol"]
 [ext_resource type="Texture2D" uid="uid://d0fgdedidby43" path="res://assets/gem_sprite.png" id="5_euoo7"]
+[ext_resource type="PackedScene" uid="uid://cistgruajftgj" path="res://scenes/toy.tscn" id="6_ha4da"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_euoo7"]
 atlas = ExtResource("4_c76ol")
@@ -81,7 +82,7 @@ visible = false
 position = Vector2(1563.0001, 261)
 scale = Vector2(1.7978516, 1.6678183)
 sprite_frames = SubResource("SpriteFrames_howbs")
-frame_progress = 0.50274104
+frame_progress = 0.9964997
 
 [node name="Area2D" type="Area2D" parent="Corrupt Grave"]
 
@@ -94,5 +95,11 @@ modulate = Color(0.047705133, 0.17827347, 0.19231011, 1)
 position = Vector2(1543, 389)
 scale = Vector2(2.0333333, 2.0066667)
 texture = ExtResource("5_euoo7")
+
+[node name="Toy" parent="." instance=ExtResource("6_ha4da")]
+position = Vector2(2318, 357.99997)
+rotation = 0.2443461
+scale = Vector2(0.8, 0.8)
+toy_type = "doll"
 
 [connection signal="input_event" from="Corrupt Grave/Area2D" to="." method="_on_grave_input_event"]

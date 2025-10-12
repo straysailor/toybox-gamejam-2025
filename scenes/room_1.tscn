@@ -22,12 +22,5 @@ position = Vector2(1763, -218)
 next_scene = "res://scenes/backyard.tscn"
 
 [node name="Toy" parent="." instance=ExtResource("4_irjyx")]
-position = Vector2(1052, 262)
-
-[node name="Toy2" parent="." instance=ExtResource("4_irjyx")]
-position = Vector2(1383, 257)
-toy_type = "fox"
-
-[node name="Toy3" parent="." instance=ExtResource("4_irjyx")]
-position = Vector2(688, 261)
-toy_type = "doll"
+position = Vector2(1179, -58)
+scale = Vector2(0.5, 0.5)

@@ -6,6 +6,7 @@ var player_spawn_side: String = "left"
 var game_started = false
 var active_quests = []
 var stage = 0
+var dead_toys = []
 
 func check_if_complete(quest)->bool:
 	var quest_objective = quest.objective
@@ -24,12 +25,17 @@ func add_active_quest(quest:QuestData) -> void:
 		active_quests.append(quest)
 
 func enable_collectibles(quest_name:String)->bool:
-	print("Enabling collectibles if any...")
 	for quest in active_quests:
 		if quest.quest_name == quest_name:
 			return true
 	return false
-
+	
+func register_death(toy_name:String)->void:
+	dead_toys.append(toy_name)
+func check_dead(toy_name:String)->bool:
+	if toy_name in dead_toys:
+		return true
+	return false
 func set_up_game()->void:
 	inventory = Inventory.new()
 	player = PlayerVars.new()
