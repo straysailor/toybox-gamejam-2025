@@ -10,12 +10,11 @@ var hour_pos = 0
 var min_pos = 0
 var quest_active = false
 var clock_locked = false
-var quest_completed = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if GameManager.stage == 2:
 		quest_active = true
-	if GameManager.stage == 3:
+	if GameManager.stage == 3 or GameManager.inventory.check_for_item("Gemstone") > 0:
 		clock_locked = true
 		gem_sprite.visible = false
 
