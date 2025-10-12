@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bgpeednoqvlk3"]
+[gd_scene load_steps=26 format=3 uid="uid://bgpeednoqvlk3"]
 
-[ext_resource type="Script" path="res://scripts/collectible.gd" id="1_ga2k0"]
+[ext_resource type="Script" uid="uid://jnex0ror2wpj" path="res://scripts/collectible.gd" id="1_ga2k0"]
 [ext_resource type="Texture2D" uid="uid://hsuoqaru7h6q" path="res://assets/TestDummy1.png" id="2_61c27"]
+[ext_resource type="Texture2D" uid="uid://d0fgdedidby43" path="res://assets/gem_sprite.png" id="3_6gns2"]
 [ext_resource type="Texture2D" uid="uid://cmdy5maxjasti" path="res://assets/magic_sprite_sheet.png" id="3_61c27"]
 [ext_resource type="Texture2D" uid="uid://b22ydrwe1ebvw" path="res://assets/wand_sprite.png" id="4_ga2k0"]
 
@@ -11,6 +12,10 @@ radius = 66.007576
 [sub_resource type="AtlasTexture" id="AtlasTexture_6gns2"]
 atlas = ExtResource("2_61c27")
 region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwtsk"]
+atlas = ExtResource("3_6gns2")
+region = Rect2(0, 0, 90, 75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61c27"]
 atlas = ExtResource("3_61c27")
@@ -72,6 +77,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwtsk")
+}],
+"loop": true,
+"name": &"gemstone",
 "speed": 5.0
 }, {
 "frames": [{
@@ -201,7 +214,7 @@ shape = SubResource("CircleShape2D_ga2k0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6088152, 0.4970706)
 sprite_frames = SubResource("SpriteFrames_rapul")
-animation = &"magic_wand"
+animation = &"gemstone"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")

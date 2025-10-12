@@ -5,6 +5,7 @@ var player: PlayerVars = PlayerVars.new()
 var player_spawn_side: String = "left"
 var game_started = false
 var active_quests = []
+var stage = 0
 
 func check_if_complete(quest)->bool:
 	var quest_objective = quest.objective

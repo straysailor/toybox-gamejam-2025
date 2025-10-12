@@ -118,6 +118,7 @@ func get_dialogue(character_name:String) -> DialogueData:
 
 func advance_quest_stage(completed_quest: QuestData)->void:
 	print("Advancing the quest stage!")
+	GameManager.stage += 1
 	if completed_quest.quest_line == "evil":
 		for d in current_evil_dialogue.next_quest:
 			if d.tag=="success":

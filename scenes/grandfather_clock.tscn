@@ -1,13 +1,357 @@
-[gd_scene load_steps=5 format=3 uid="uid://c33bhdlcws72i"]
+[gd_scene load_steps=26 format=3 uid="uid://c33bhdlcws72i"]
 
 [ext_resource type="Texture2D" uid="uid://bpoqdc7bn80v2" path="res://assets/grandfather_clock.png" id="1_g6lh4"]
+[ext_resource type="Script" uid="uid://bwhmkvh122uqr" path="res://scripts/grandfather_clock.gd" id="1_pta6l"]
 [ext_resource type="Texture2D" uid="uid://c4cesy6uojnwc" path="res://assets/hour_hand.png" id="2_pta6l"]
 [ext_resource type="Texture2D" uid="uid://cdf0l5p1lr01r" path="res://assets/minute_hand.png" id="3_uvtdf"]
+[ext_resource type="Texture2D" uid="uid://d0fgdedidby43" path="res://assets/gem_sprite.png" id="5_uvtdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axv5g"]
 size = Vector2(157, 148)
 
+[sub_resource type="Animation" id="Animation_pta6l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MinuteHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.1415927]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GemSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 93)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GemSprite:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.3351032]
+}
+
+[sub_resource type="Animation" id="Animation_uvtdf"]
+resource_name = "hour_5"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5707964, 2.268928]
+}
+
+[sub_resource type="Animation" id="Animation_axv5g"]
+resource_name = "hour_6"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.268928, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_8o3qp"]
+resource_name = "hour_7"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.1415927, 3.8397243]
+}
+
+[sub_resource type="Animation" id="Animation_31qem"]
+resource_name = "hour_9"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.8397243, 4.712389]
+}
+
+[sub_resource type="Animation" id="Animation_7pcd3"]
+resource_name = "hour_11"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.712389, 5.497787]
+}
+
+[sub_resource type="Animation" id="Animation_j3k1m"]
+resource_name = "hour_12"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.497787, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_8b7ik"]
+resource_name = "hour_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7330383]
+}
+
+[sub_resource type="Animation" id="Animation_71jt3"]
+resource_name = "hour_3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HourHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7330383, 1.5707964]
+}
+
+[sub_resource type="Animation" id="Animation_xw0b8"]
+resource_name = "min_15"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinuteHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.8397243, 4.712389]
+}
+
+[sub_resource type="Animation" id="Animation_o5u6s"]
+resource_name = "min_5"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinuteHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.1415927, 3.8397243]
+}
+
+[sub_resource type="Animation" id="Animation_6hwqr"]
+resource_name = "min_25"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinuteHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.712389, 5.497787]
+}
+
+[sub_resource type="Animation" id="Animation_s6sdn"]
+resource_name = "min_30"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinuteHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.497787143782138, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_m75x3"]
+resource_name = "min_35"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinuteHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7853982]
+}
+
+[sub_resource type="Animation" id="Animation_gka4j"]
+resource_name = "min_45"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinuteHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7853982, 1.5707964]
+}
+
+[sub_resource type="Animation" id="Animation_diuiw"]
+resource_name = "min_55"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinuteHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5707964, 2.3561945]
+}
+
+[sub_resource type="Animation" id="Animation_vwdii"]
+resource_name = "min_0"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinuteHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_1hk3m"]
+resource_name = "drop_gem"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GemSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.6666667, 0.8, 0.9, 1.0333333, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 0.8705504, 1, 1.2311447, 3.0314333, 0.6372803, 1.3195081),
+"update": 0,
+"values": [Vector2(3, 93), Vector2(3, 288), Vector2(40, 230), Vector2(50, 220), Vector2(60, 240), Vector2(90, 288), Vector2(100, 270), Vector2(110, 288)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GemSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36666667, 0.6666667, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.3351032, 2.0106194, 3.853687]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5u6s"]
+_data = {
+&"RESET": SubResource("Animation_pta6l"),
+&"drop_gem": SubResource("Animation_1hk3m"),
+&"hour_1": SubResource("Animation_8b7ik"),
+&"hour_11": SubResource("Animation_7pcd3"),
+&"hour_12": SubResource("Animation_j3k1m"),
+&"hour_3": SubResource("Animation_71jt3"),
+&"hour_5": SubResource("Animation_uvtdf"),
+&"hour_6": SubResource("Animation_axv5g"),
+&"hour_7": SubResource("Animation_8o3qp"),
+&"hour_9": SubResource("Animation_31qem"),
+&"min_0": SubResource("Animation_vwdii"),
+&"min_15": SubResource("Animation_xw0b8"),
+&"min_25": SubResource("Animation_6hwqr"),
+&"min_30": SubResource("Animation_s6sdn"),
+&"min_35": SubResource("Animation_m75x3"),
+&"min_45": SubResource("Animation_gka4j"),
+&"min_5": SubResource("Animation_o5u6s"),
+&"min_55": SubResource("Animation_diuiw")
+}
+
 [node name="Grandfather Clock" type="Node2D"]
+script = ExtResource("1_pta6l")
 
 [node name="GrandfatherClock" type="Sprite2D" parent="."]
 texture = ExtResource("1_g6lh4")
@@ -18,12 +362,30 @@ texture = ExtResource("1_g6lh4")
 position = Vector2(1, -183)
 shape = SubResource("RectangleShape2D_axv5g")
 
-[node name="HourHand" type="Sprite2D" parent="."]
-position = Vector2(1, -206)
-texture = ExtResource("2_pta6l")
-
 [node name="MinuteHand" type="Sprite2D" parent="."]
-position = Vector2(1, -162)
+position = Vector2(0, -187)
+rotation = 3.1415927
 texture = ExtResource("3_uvtdf")
+centered = false
+offset = Vector2(-23, 0)
+
+[node name="HourHand" type="Sprite2D" parent="."]
+position = Vector2(1, -188)
+texture = ExtResource("2_pta6l")
+centered = false
+offset = Vector2(-23.5, -40)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o5u6s")
+}
+
+[node name="GemSprite" type="Sprite2D" parent="."]
+position = Vector2(3, 93)
+rotation = 0.3351032
+texture = ExtResource("5_uvtdf")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_clockface_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_clockface_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_clockface_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

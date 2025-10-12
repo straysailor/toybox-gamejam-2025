@@ -15,6 +15,8 @@ func _on_ready():
 		self.modulate = Color("500418")
 	elif item_name == "Magic Wand":
 		$AnimatedSprite2D.play("magic_wand")
+	elif item_name == "Gemstone":
+		$AnimatedSprite2D.play("gemstone")
 	else:
 		$AnimatedSprite2D.play("default")
 

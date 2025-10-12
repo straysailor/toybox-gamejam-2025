@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ly1si26xanw"]
+[gd_scene load_steps=5 format=3 uid="uid://b5ly1si26xanw"]
 
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_586c8"]
 [ext_resource type="Script" uid="uid://bls7vsuokfnxs" path="res://scripts/room_2.gd" id="1_w0ydv"]
+[ext_resource type="Texture2D" uid="uid://c6fpeuqwhyuky" path="res://assets/kids_hall_bg.png" id="2_4et86"]
+[ext_resource type="PackedScene" uid="uid://c33bhdlcws72i" path="res://scenes/grandfather_clock.tscn" id="3_ktm03"]
 
 [node name="Room2" type="Node2D"]
 script = ExtResource("1_w0ydv")
+
+[node name="KidsHallBg" type="Sprite2D" parent="."]
+position = Vector2(1285.8002, -33.50004)
+scale = Vector2(1.6070002, 1.6070001)
+texture = ExtResource("2_4et86")
+
+[node name="Grandfather Clock" parent="." instance=ExtResource("3_ktm03")]
+position = Vector2(1251, 44)
+scale = Vector2(1.5, 1.5)
 
 [node name="RoomLayout" parent="." instance=ExtResource("1_586c8")]
 position = Vector2(7, -1)
