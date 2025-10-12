@@ -64,5 +64,6 @@ char_name = "evil"
 position = Vector2(1117, 386)
 char_name = "good"
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="box/Area2D" to="." method="_on_box_touched"]
 [connection signal="body_exited" from="box/Area2D" to="." method="_on_box_left"]

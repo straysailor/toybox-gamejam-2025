@@ -24,6 +24,7 @@ func _ready() -> void:
 		player.position.x = $DoorRight.position.x - 300
 	if spawn_mid:
 		GameManager.player_spawn_side = "middle"
+	print(get_viewport().size)
 
 
 func _on_door_right_body_entered(body: Node2D) -> void:

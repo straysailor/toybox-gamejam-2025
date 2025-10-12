@@ -1,58 +1,133 @@
-[gd_scene format=3 uid="uid://ck80l1156vymt"]
+[gd_scene load_steps=9 format=3 uid="uid://ck80l1156vymt"]
+
+[ext_resource type="Script" uid="uid://b1uyvkhl6e7di" path="res://scripts/dialogue_box.gd" id="1_rc1id"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ota6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc1id"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rc1id"]
+font_size = 44
+
+[sub_resource type="LabelSettings" id="LabelSettings_fu8b5"]
+font_size = 35
+font_color = Color(0.45999998, 0.65800005, 1, 0.56078434)
+
+[sub_resource type="Animation" id="Animation_rc1id"]
+resource_name = "load_text"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/BodyCont/DialogueText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_fu8b5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/BodyCont/DialogueText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tm68y"]
+_data = {
+&"RESET": SubResource("Animation_fu8b5"),
+&"load_text": SubResource("Animation_rc1id")
+}
 
 [node name="DialogueBox" type="Control"]
+top_level = true
+z_index = 27
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 186.0
+offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rc1id")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 753.0
-offset_bottom = 136.0
+offset_right = 1701.0
+offset_bottom = 275.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
+modulate = Color(0.1625, 0.18, 0.25, 1)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ota6")
 
-[node name="OptionContainer" type="MarginContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Options" type="VBoxContainer" parent="MarginContainer/OptionContainer"]
-custom_minimum_size = Vector2(150, 100)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-
-[node name="Option1" type="Button" parent="MarginContainer/OptionContainer/Options"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Yes"
-
-[node name="Option2" type="Button" parent="MarginContainer/OptionContainer/Options"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "No"
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+[node name="BodyCont" type="MarginContainer" parent="MarginContainer"]
+modulate = Color(2.5210483, 2.5210483, 2.5210483, 1)
+self_modulate = Color(0.68, 0.14132664, 0.02039998, 1)
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/MarginContainer"]
+[node name="DialogueText" type="RichTextLabel" parent="MarginContainer/BodyCont"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 35
 text = "This is some example text."
 fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 1425.0
+offset_top = 202.0
+offset_right = 1699.0
+offset_bottom = 270.0
+
+[node name="Panel" type="Panel" parent="MarginContainer2"]
+self_modulate = Color(0.0459411, 0.060658716, 0.15517002, 1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rc1id")
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+text = "Press W"
+label_settings = SubResource("LabelSettings_rc1id")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeakerCont" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 4.0
+offset_right = 215.0
+offset_bottom = 42.0
+theme_override_constants/margin_left = 20
+
+[node name="SpeakerLabel" type="Label" parent="SpeakerCont"]
+layout_mode = 2
+text = "Name Here"
+label_settings = SubResource("LabelSettings_fu8b5")
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tm68y")
+}

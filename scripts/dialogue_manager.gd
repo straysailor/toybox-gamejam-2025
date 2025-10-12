@@ -26,6 +26,61 @@ var quest_data = [
 	"number": 1
 	},
 ]
+var intro_dialogue = [{
+	"char": "Clyde the Cat",
+	"lines":["..."]
+},{
+	"char": "Robo Godot",
+	"lines":["..."]
+},{
+	"char": "Kid",
+	"lines":["..."]
+},{
+	"char": "Robo Godot",
+	"lines":["I think he sees us.."]
+},{
+	"char": "Clyde the Cat",
+	"lines":["Shush"]
+},
+{
+	"char": "Kid",
+	"lines":["..."]
+},
+{
+	"char": "Clyde the Cat",
+	"lines":["...Ugh, I can’t take this anymore!", "I’m in a terrible position to be playing fake. My yarns feel too old to be doing stealth anymore…"]
+},{
+	"char": "Robo Godot",
+	"lines":["Well…now that the cat’s out of the bag…thanks to you."]
+},
+{
+	"char": "Clyde the Cat",
+	"lines":["Tsk!"]
+},
+{
+	"char": "Robo Godot",
+	"lines":[" Anyways, it’s been too long of a time!", "I’ve always wondered what you’d look like! And you look as kind as I had imagined!", "Even though we’ve been with you this entire time, I couldn’t get a good look at you until now!
+"]
+},
+{
+	"char":"Clyde the Cat",
+	"lines":["We’ve had consciousness but not an actual eye nor the ability to meet you like this.", "Do you remember when your mom had to sew one of my eyes with a button because you were too rough with me?",
+	"Guess what? I now have what's called a 'Faery Eye', I should be thanking you."]
+},
+{
+	"char": "Kid",
+	"lines":["What does it do...?"]
+},
+{
+	"char": "Clyde the Cat",
+	"lines":["It allows me to discern between lies and truths, meaning that I can piece together what you wish for!", "Kind of like those wish granting stars!"]
+}, 
+{
+	"char": "Robo Godot",
+	"lines":["Don’t be tainted by his charming words!","I am the hero of the toys and I am the protector which you had me sworn to protect each and every toy!"
+	,"You can be my right-hand man in saving all the toys!", "We should chat- in private."]
+}
+]
 var evil_dialogue_data = [
 	{"id":"first_evil_quest",
 	"tag": "success",
@@ -137,3 +192,13 @@ func advance_quest_stage(completed_quest: QuestData)->void:
 				current_good_dialogue = d
 	else:
 		dialogue_enabled = true
+
+## INTRO DIALOGUE HANDLER
+var intro_i = 0
+var intro_len = len(intro_dialogue)
+func get_next_intro():
+	var next_dialogue = {"char":"end","lines":[]}
+	if intro_i < intro_len:
+		next_dialogue = intro_dialogue[intro_i]
+		intro_i+=1
+	return next_dialogue
