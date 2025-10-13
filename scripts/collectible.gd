@@ -8,9 +8,9 @@ extends Node2D
 var interactive = true
 
 func _on_ready():
-	if item_name == "Magic Orb":
+	if item_name == "Magic Orb" or item_name == "GodotHeart":
 		$AnimatedSprite2D.play("magic_orb")
-	elif item_name == "Heart":
+	elif item_name == "Heart" or item_name == "ClydeHeart":
 		$AnimatedSprite2D.play("magic_orb")
 		self.modulate = Color("500418")
 	elif item_name == "Magic Wand":

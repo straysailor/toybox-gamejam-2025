@@ -12,7 +12,7 @@ var quest_active = false
 var clock_locked = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if GameManager.stage == 2:
+	if GameManager.enable_collectibles("Second Good Quest") or GameManager.enable_collectibles("Second Evil Quest"):
 		quest_active = true
 	if GameManager.stage == 3 or GameManager.inventory.check_for_item("Gemstone") > 0:
 		clock_locked = true

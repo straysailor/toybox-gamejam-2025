@@ -1,8 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckudr8chj1kgo"]
+[gd_scene load_steps=20 format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dtuu2sjmyewwm" path="res://scripts/player_input.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://cb7fdj0cfly7x" path="res://assets/kid_wand_sprite.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://b007lx2bmbkpv" path="res://assets/kid_walk_idle_sprite_sheet.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://bxefhas877wtg" path="res://assets/kid_jump_sprite.png" id="3_qhqgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("2_dqkch")
+region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -54,6 +59,20 @@ region = Rect2(3584, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f1ej7"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
@@ -120,10 +139,12 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -26)
 sprite_frames = SubResource("SpriteFrames_f1ej7")
-animation = &"walk"
+animation = &"attack"
+frame_progress = 0.42123702
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -9)
 shape = SubResource("CapsuleShape2D_hqtel")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_sprite_animation_finished"]

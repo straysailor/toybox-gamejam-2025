@@ -13,7 +13,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 2 
-
+	if Input.is_action_just_pressed("secondary_interact") and GameManager.game_started:
+		print("Attack!")
+		can_move = false
+		sprites.play("attack")
 	# Handle jump.
 	if can_move:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -46,5 +49,9 @@ func _physics_process(delta: float) -> void:
 			else:
 				sprites.play("jump")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+	if can_move:
+		move_and_slide()
 
-	move_and_slide()
+
+func _on_sprite_animation_finished() -> void:
+	can_move = true

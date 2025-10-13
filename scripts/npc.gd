@@ -5,11 +5,12 @@ extends Node2D
 
 @onready var indicator = $InteractIndicator/AnimationPlayer
 @onready var text = $InteractIndicator
-
+var collectible = load("res://scenes/collectible.tscn")
 var player_in_range = false
 var text_default = "Speak\nv"
 var next_text = ""
 var dialogue = null
+var alive = true
 
 func _ready() -> void:
 	dialogue = DialogueManager.get_dialogue(char_name)
@@ -22,29 +23,57 @@ func _ready() -> void:
 		$AnimatedSprite2D.play("default")
 	
 func _on_interact_area_entered(body: Node2D) -> void:
-	if body.name == "Player" and DialogueManager.dialogue_enabled:
-		player_in_range = true
-		indicator.play("fade_text")
-	elif body.name == "Player":
-		GameManager.check_if_complete(GameManager.active_quests[0])
+	if alive:
+		if body.name == "Player" and DialogueManager.dialogue_enabled:
+			player_in_range = true
+			indicator.play("fade_text")
+		elif body.name == "Player":
+			if len(GameManager.active_quests) > 0:
+				GameManager.check_if_complete(GameManager.active_quests[0])
 
 func _on_interact_area_exited(body: Node2D) -> void:
-	if body.name == "Player" and DialogueManager.dialogue_enabled:
-		text.text = text_default
-		player_in_range = false
-		indicator.stop(false)
+	if alive:
+		if body.name == "Player" and DialogueManager.dialogue_enabled:
+			text.text = text_default
+			player_in_range = false
+			indicator.stop(false)
 		
 func _input(event: InputEvent) -> void:
-	if player_in_range and event.is_action_pressed("interact"):
-		indicator.stop(false)
-		text.label_settings.font_color = Color(255.0, 255.0, 255.0, 1.0)
-		text.text = next_text + "\nv"
-		GameManager.add_active_quest(dialogue.quest)
-		handle_dialogue()
+	if alive:
+		if player_in_range and event.is_action_pressed("interact"):
+			indicator.stop(false)
+			text.label_settings.font_color = Color(255.0, 255.0, 255.0, 1.0)
+			text.text = next_text + "\nv"
+			handle_dialogue()
+			GameManager.add_active_quest(dialogue.quest)
+
 
 func handle_dialogue() -> void:
-	next_text = dialogue.next_dialogue()
+	if dialogue and dialogue.id != DialogueManager.get_dialogue(char_name).id:
+		dialogue = DialogueManager.get_dialogue(char_name)
 	if dialogue.check_fulfilled() or dialogue.check_updated():
 		dialogue = DialogueManager.get_dialogue(char_name)
-		next_text = dialogue.next_dialogue()
+	next_text = dialogue.next_dialogue()
 	
+
+
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("secondary_interact") and alive:
+		if char_name == "evil" and GameManager.enable_collectibles("Kill Clyde"):
+			alive = false
+			indicator.stop(false)
+			indicator.play("death")
+			var clyde_heart = collectible.instantiate()
+			clyde_heart.item_name = "ClydeHeart"
+			clyde_heart.position.x = $AnimatedSprite2D.position.x
+			clyde_heart.position.x = $AnimatedSprite2D.position.y
+			self.add_child(clyde_heart)
+		elif char_name == "good" and GameManager.enable_collectibles("Third Evil Quest"):
+			alive = false
+			indicator.stop(false)
+			indicator.play("death")
+			var godot = collectible.instantiate()
+			godot.item_name = "GodotHeart"
+			godot.position.x = $AnimatedSprite2D.position.x
+			godot.position.x = $AnimatedSprite2D.position.y
+			self.add_child(godot)

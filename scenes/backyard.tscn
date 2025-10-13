@@ -82,7 +82,7 @@ visible = false
 position = Vector2(1563.0001, 261)
 scale = Vector2(1.7978516, 1.6678183)
 sprite_frames = SubResource("SpriteFrames_howbs")
-frame_progress = 0.9964997
+frame_progress = 0.31841034
 
 [node name="Area2D" type="Area2D" parent="Corrupt Grave"]
 

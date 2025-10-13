@@ -1,6 +1,34 @@
 extends Node
-
+var endings = [
+	{
+		"good":3,
+		"evil":0,
+		"text":"You did good!"
+	},
+	{
+		"good":2,
+		"evil":1,
+		"text":"You did mostly good!"
+	},
+	{
+		"good":1,
+		"evil":2,
+		"text":"You did mostly evil!"
+	},
+	{
+		"good":0,
+		"evil":2,
+		"text":"You did evil!"
+	}
+]
 var quest_data = [
+	{
+	"line":"empty",
+	"stage": 4,
+	"name":"End",
+	"objective":"none",
+	"number": 100
+	},
 	{"line":"evil",
 	"stage": 1,
 	"name":"First Evil Quest",
@@ -11,6 +39,12 @@ var quest_data = [
 	"stage": 2,
 	"name":"Second Evil Quest",
 	"objective":"Gemstone",
+	"number": 1
+	},
+	{"line":"evil",
+	"stage": 3,
+	"name":"Third Evil Quest",
+	"objective":"GodotHeart",
 	"number": 1
 	},
 	{"line":"good",
@@ -25,6 +59,18 @@ var quest_data = [
 	"objective":"Gemstone",
 	"number": 1
 	},
+	{"line":"good",
+	"stage": 3,
+	"name": "Third Good Quest",
+	"objective":"Gemstone",
+	"number": 1
+	},{
+		"line":"good",
+		"stage":3,
+		"name":"Kill Clyde",
+		"objective":"ClydeHeart",
+		"number": 1
+	}
 ]
 var intro_dialogue = [{
 	"char": "Clyde the Cat",
@@ -94,15 +140,46 @@ var evil_dialogue_data = [
 	"tag": "success",
 	"char":"evil", 
 	"lines":["Great job kid", "Let’s see if Godot will like this present for him", "But before that I need you to relinquish your heart\nby letting you out of your cage", 
-	"Go find your parents and give them a bonk with your Magical Wand", "I promise they won’t nag you about it and they’ll have fun like you do."],
+	"I need to you find a purple gemstone...", "The fox told me where it was..", "He said it hangs under three and three quarters",
+	"Give it to me once you're finished", "Remember, three and three quarters.."],
 	"quest":"Second Evil Quest",
-	"options": []
+	"options": ["third_evil_quest", "second_failed_evil_quest"]
+	},{"id":"third_evil_quest",
+	"tag": "success",
+	"char":"evil", 
+	"lines":["Good, when your parents wake up\nthey will join you and play with you everyday.", "Doesn’t that sound fun?", "Now we need to do one last thing\nbefore you can have everything you have ever wanted…", 
+	"I need you to harvest the secret from Godot"],
+	"quest":"Second Evil Quest",
+	"options": ["ending"]
 	},
 	{"id":"first_failed_evil_quest",
 	"tag": "failure",
 	"char":"evil", 
-	"lines":["I see you didn't care for my first offer", "Don't worry, we can fix that", "Next quest"],
-	"quest":"Second Evil Quest",
+	"lines":["I see you didn't care for my offer of you greatest wish...", "Don't worry, I'm generous", "You can have a second chance", "Go get those toys for me\nbefore it's too late."],
+	"quest":"First Evil Quest",
+	"options": ["second_evil_quest", "second_failed_evil_quest", "ending"]
+	},
+	{"id":"second_failed_evil_quest",
+	"tag": "failure",
+	"char":"evil", 
+	"lines":["Ugh, what do you want\nyou goodie two shoe?", "Regret your choice of going\n with that mentally ill toy?", "I told you that he was delusional,\nnothing good will ever come from him", "But I won’t lie to you,\nI will let you have control\n over your own desires\n","So…what do you say",
+	"Well…you’re not fully influenced\n by that delusional brat yet…","So you can still be useful."," I’ll still keep my promise\n about you getting what your\n heart desires",
+	"I just need you\nto strike down Godot!"],
+	"quest":"Third Evil Quest",
+	"options": ["evil_2_end"]
+	},
+	{"id":"evil_2_end",
+	"tag": "success",
+	"char":"evil", 
+	"lines":["That's very good...", "I suppose I can grant\nyou your wish after all", "You're sick of your parents\ntelling you what to do", "I know\nI hear you complain", "Let me take care\n of that for you"],
+	"quest":"End",
+	"options": []
+	},
+	{"id":"evil_1_end",
+	"tag": "success",
+	"char":"evil", 
+	"lines":["That's very good...", "I suppose I can grant\nyou your wish after all", "You're sick of your parents\ntelling you what to do", "I know\nI hear you complain", "Let me take care\n of that for you"],
+	"quest":"End",
 	"options": []
 	}
 ]
@@ -119,14 +196,35 @@ var good_dialogue_data = [
 	"char":"good", 
 	"lines":["Great!", "Now that we have enough “Magic” charged into your Wand, I need one more thing", "I've never seen it before personally", "but the fox told me!", "He said it hangs under three and three quarters"],
 	"quest":"Second Good Quest",
-	"options": []
+	"options": ["third_good_quest", "second_failed_good_quest"]
+	},
+	{"id":"third_good_quest",
+	"tag": "success",
+	"char":"good", 
+	"lines":["Great!", "With this gem, we can exorcise that old spirit", "Visit the gravestone outback", "You'll have to place the gem there\nand then we can begin\nthe ritual"],
+	"quest":"Third Good Quest",
+	"options": ["ending"]
 	},
 	{"id":"first_failed_good_quest",
 	"tag": "failure",
 	"char":"good", 
-	"lines":["I forgive you for your betrayal", "Everyone deserves a second chance"],
-	"quest":"Second Good Quest",
-	"options": []
+	"lines":["I forgive you for your betrayal", "Everyone deserves a second chance", "We still need that magic!", "Go get those orbs"],
+	"quest":"First Good Quest",
+	"options": ["second_good_quest", "second_failed_good_quest", "ending"]
+	},
+	{"id":"second_failed_good_quest",
+	"tag": "failure",
+	"char":"good", 
+	"lines":["Ah, I was hoping it didn't have to be like this...", "You can still help me if you find the will in your heart", "I need you to strike down Clyde", "I thought we could rescue him\nthat opporunity is passed", "Go on now, and you may redeem yourself."],
+	"quest":"Kill Clyde",
+	"options": ["good_2_ending"]
+	},
+	{"id":"good_2_ending",
+	"tag": "success",
+	"char":"good",
+	"lines":["You did the right thing in the end", "but the damage has been done", "With the power that Clyde\npossessed for even a moment,\nhe certainly reaked havoc", "I fear things will never be the same for you, kid"],
+	"quest":"End",
+	"options":[]
 	}
 ]
 
@@ -174,24 +272,27 @@ func get_dialogue(character_name:String) -> DialogueData:
 	return null
 
 func advance_quest_stage(completed_quest: QuestData)->void:
-	print("Advancing the quest stage!")
-	GameManager.stage += 1
 	if completed_quest.quest_line == "evil":
+		GameManager.fail_quest(current_good_dialogue.quest)
 		for d in current_evil_dialogue.next_quest:
 			if d.tag=="success":
 				current_evil_dialogue = d
 		for d in current_good_dialogue.next_quest:
 			if d.tag == "failure":
 				current_good_dialogue = d
+		GameManager.stage = current_evil_dialogue.quest.quest_stage
 	elif completed_quest.quest_line == "good":
+		GameManager.fail_quest(current_evil_dialogue.quest)
 		for d in current_evil_dialogue.next_quest:
 			if d.tag=="failure":
 				current_evil_dialogue = d
 		for d in current_good_dialogue.next_quest:
 			if d.tag == "success":
 				current_good_dialogue = d
+		GameManager.stage = current_good_dialogue.quest.quest_stage
 	else:
 		dialogue_enabled = true
+	print(GameManager.stage)
 
 ## INTRO DIALOGUE HANDLER
 var intro_i = 0

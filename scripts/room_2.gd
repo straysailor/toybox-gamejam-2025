@@ -5,7 +5,6 @@ var collectibles_enabled = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	collectibles_enabled = GameManager.enable_collectibles("First Good Quest")
-	print("Scene Loaded")
 	if collectibles_enabled:
 		for i in range(0, 3):
 			var new_item = collectible.instantiate()

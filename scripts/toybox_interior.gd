@@ -60,6 +60,7 @@ func handle_dialogue():
 			if dialogue:
 				dialogue_open = false
 				self.remove_child(dialogue)
+				GameManager.stage = 1
 				player.can_move = true
 		
 		

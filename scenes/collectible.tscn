@@ -214,7 +214,7 @@ shape = SubResource("CircleShape2D_ga2k0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.6088152, 0.4970706)
 sprite_frames = SubResource("SpriteFrames_rapul")
-animation = &"gemstone"
+animation = &"magic_orb"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")

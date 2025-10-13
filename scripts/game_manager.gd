@@ -4,17 +4,17 @@ var inventory: Inventory = Inventory.new()
 var player: PlayerVars = PlayerVars.new()
 var player_spawn_side: String = "left"
 var game_started = false
+var completed_quest_string = []
 var active_quests = []
 var stage = 0
 var dead_toys = []
 
 func check_if_complete(quest)->bool:
 	var quest_objective = quest.objective
-	print("The objective: ", quest_objective)
-	print("Player's inventory: ", inventory.check_for_item(quest_objective))
 	if inventory.check_for_item(quest_objective) >= quest.number:
 		print("Quest complete!")
 		if quest in active_quests:
+			completed_quest_string.append(quest.quest_line)
 			active_quests.erase(quest)
 		DialogueManager.advance_quest_stage(quest)
 		return true
@@ -23,8 +23,13 @@ func check_if_complete(quest)->bool:
 func add_active_quest(quest:QuestData) -> void:
 	if quest not in active_quests:
 		active_quests.append(quest)
+		
+func fail_quest(quest:QuestData)->void:
+	if quest in active_quests:
+		active_quests.erase(quest)
 
 func enable_collectibles(quest_name:String)->bool:
+	print(active_quests)
 	for quest in active_quests:
 		if quest.quest_name == quest_name:
 			return true
