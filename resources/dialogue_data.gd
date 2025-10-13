@@ -22,8 +22,9 @@ func next_dialogue()->String:
 	if tracker < len(dialogue_lines) - 1:
 		tracker = tracker + 1
 	else:
-		print("The quest is on!")
 		quest_active = true
+		if quest.quest_name == "End":
+			GameManager.end_game()
 	return next
 	
 func check_updated()-> bool:
@@ -31,7 +32,6 @@ func check_updated()-> bool:
 		return true
 	return false
 func check_fulfilled()->bool:
-	print("Checking if the quest has been fulfilled")
 	if quest_active:
 		return GameManager.check_if_complete(quest)
 	return false

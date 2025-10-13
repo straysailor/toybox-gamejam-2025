@@ -7,6 +7,7 @@ extends Resource
 @export var objective: String
 @export var number: int
 @export var accepted: bool = false
+@export var complete: bool = false
 
 func _init(line: String, name: String, stage: int, obj: String, num: int):
 	quest_line=line
