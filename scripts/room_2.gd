@@ -9,6 +9,6 @@ func _ready() -> void:
 		for i in range(0, 3):
 			var new_item = collectible.instantiate()
 			new_item.item_name = "Magic Orb"
-			new_item.position.x = rng.randi_range(100, 1300)
+			new_item.position.x = rng.randi_range(500, 2000)
 			new_item.position.y = rng.randi_range(-60, 100)
 			self.add_child(new_item)

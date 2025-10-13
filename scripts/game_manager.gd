@@ -63,15 +63,24 @@ func set_up_game()->void:
 
 func get_ending()->String:
 	var g_count = completed_quest_string.count("good")
-	print(completed_quest_string)
 	if g_count == 3:
-		return "You did good"
+		return "After cleansing the grave, it felt as if a weight had been lifted from your shoulders.
+		 Clyde's personality changed to be friendlier. Life went on
+		as usual for a while. You found yourself spending more time talking to your plushes than your friends and family.
+		None of them were able to speak to the toys like you were. Rumors began ciculating that you had lost your mind...
+		but you didn't care. You were happy, and that's all that mattered..."
 	elif g_count == 2:
-		return "You did mostly good"
+		return "You were doing so well…until you were tainted with the possibilities that Clyde had for you. 
+		But in the end you still got what you had wanted, so why does it matter?"
 	elif g_count == 1:
-		return "You did mostly evil"
+		return "With Godot's words echoing in your mind, you left the toybox to find all was not as you thought it had been.
+		Pots and pans piled high in the sink, dust and cobwebs accumulated in corners. The place felt empty- as if no one had been there for a while.
+		You checked the backyard, walking up to the old grave. The words inscribed there finally seemed legible. To your 
+		horror, they read Mom and Dad 1987 - 2025."
 	else:
-		return "You did evil"
+		return "You find your vision darkening as Clyde rises from the corner he was sitting in. 
+		The police soon arrive at the house and find the kid in the middle of their destroyed toys, laughing  to themselves, 
+		while in another room the kids parents are sprawled across the floor, pale and lifeless with no clear cause of injury..."
 
 func end_game():
 	Global.next_scene = "res://scenes/end.tscn";

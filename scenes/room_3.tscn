@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bf2e7k1554bnp"]
+[gd_scene load_steps=14 format=3 uid="uid://bf2e7k1554bnp"]
 
 [ext_resource type="PackedScene" uid="uid://dqxg0i0inl20q" path="res://scenes/room_layout.tscn" id="1_1nud3"]
 [ext_resource type="Texture2D" uid="uid://bqsa1tkl5mgvf" path="res://assets/kidsroom_toybox_bg.png" id="1_bg4i0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://celjaw4mium1b" path="res://assets/kids_table.png" id="7_y78up"]
 [ext_resource type="Texture2D" uid="uid://dy0hus3rhj2ll" path="res://assets/kids_lamp.png" id="8_ovtde"]
 [ext_resource type="PackedScene" uid="uid://cistgruajftgj" path="res://scenes/toy.tscn" id="10_m0s70"]
+[ext_resource type="Texture2D" uid="uid://b70a2b4m1blp2" path="res://assets/shelf_sprite.png" id="11_reu6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y78up"]
 size = Vector2(251.6322, 86.753204)
@@ -82,6 +83,12 @@ position = Vector2(178, -506)
 scale = Vector2(0.6, 0.6)
 toy_type = "fox"
 flipped = true
+
+[node name="ShelfSprite" type="Sprite2D" parent="."]
+modulate = Color(0.75346106, 0.7972993, 0.979932, 1)
+z_index = 17
+position = Vector2(175, -349)
+texture = ExtResource("11_reu6s")
 
 [connection signal="body_entered" from="Bed/Area2D" to="." method="_on_bed_touched"]
 [connection signal="body_exited" from="Bed/Area2D" to="." method="_on_bed_left"]

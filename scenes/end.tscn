@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://pujirl51cm5p"]
+[gd_scene load_steps=8 format=3 uid="uid://pujirl51cm5p"]
 
 [ext_resource type="Script" uid="uid://nnefc4nhgtb8" path="res://scenes/end.gd" id="1_mwn6m"]
+[ext_resource type="Texture2D" uid="uid://cl6ua0qn5snac" path="res://assets/kids_kitchen_bg.png" id="2_s4tl2"]
+[ext_resource type="Texture2D" uid="uid://c6fpeuqwhyuky" path="res://assets/kids_hall_bg.png" id="3_8hmjt"]
+[ext_resource type="Texture2D" uid="uid://dxgxgkk0ukfh6" path="res://assets/kids_backyard_bg.png" id="4_o5lv4"]
+[ext_resource type="Texture2D" uid="uid://38ihl08u12mu" path="res://assets/toybox_interior_bg.png" id="5_ee763"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4tl2"]
+bg_color = Color(0.13870001, 0.13870001, 0.19, 0.73333335)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4tl2"]
+line_spacing = 5.0
+font_size = 29
 
 [node name="End" type="Control"]
 layout_mode = 3
@@ -11,16 +22,43 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mwn6m")
 
+[node name="GoodBG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(646, 353)
+scale = Vector2(0.82910156, 0.82910156)
+texture = ExtResource("2_s4tl2")
+
+[node name="EvilBG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(644, 344)
+scale = Vector2(0.82850003, 0.8285)
+texture = ExtResource("3_8hmjt")
+
+[node name="PartGoodBG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(638.25, 321.5)
+scale = Vector2(0.87099993, 0.87099993)
+texture = ExtResource("4_o5lv4")
+
+[node name="PartEvilBG" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(637.00006, 353)
+scale = Vector2(0.876, 0.876)
+texture = ExtResource("5_ee763")
+
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 1284.0
 offset_bottom = 722.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s4tl2")
 
 [node name="Ending Text" type="Label" parent="."]
 layout_mode = 0
 offset_left = 169.0
-offset_top = 233.0
+offset_top = 177.0
 offset_right = 1148.0
-offset_bottom = 470.0
+offset_bottom = 562.0
+label_settings = SubResource("LabelSettings_s4tl2")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
